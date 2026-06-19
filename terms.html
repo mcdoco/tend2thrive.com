@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <title>Terms of Service — Tend2Thrive</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #004F99;
+      --blue-dark: #003D75;
+      --green: #00BA00;
+      --pale: #eef4fb;
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #d3e2f0;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      line-height: 1.6;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Scrollable page area — everything except the fixed nav */
+    .page {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--blue-dark);
+      background: var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo img {
+      height: 4rem;
+      width: 4rem;
+      display: block;
+      margin-top: -1rem;
+      margin-bottom: -1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    nav a { text-decoration: none; color: #fff; }
+    nav a:hover { color: var(--green); }
+
+    .nav-cta {
+      background: transparent;
+      color: #fff !important;
+      border: 1px solid var(--green);
+      padding: 0.5rem 1.1rem;
+      border-radius: 4px;
+    }
+    .nav-cta:hover { background: var(--green) !important; color: var(--text) !important; }
+
+    /* ── Legal content ── */
+    .legal {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 4rem;
+    }
+
+    .legal .eyebrow {
+      font-family: system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+
+    .legal h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--blue);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .legal .updated {
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .legal h2 {
+      font-size: 1.35rem;
+      color: var(--blue);
+      margin: 2.5rem 0 0.75rem;
+    }
+
+    .legal h3 {
+      font-size: 1.05rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .legal p, .legal li {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .legal ul, .legal ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .legal li { margin-bottom: 0.5rem; }
+
+    .legal a { color: var(--blue); }
+
+    .legal .lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .callout {
+      background: var(--pale);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .toc {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+    .toc strong { display: block; margin-bottom: 0.5rem; }
+    .toc ol { padding-left: 1.25rem; margin: 0; }
+    .toc li { margin-bottom: 0.3rem; }
+    .toc a { color: var(--muted); text-decoration: none; }
+    .toc a:hover { color: var(--blue); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--blue); }
+
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="logo"><img src="icon.png" alt="" />tend2thrive</a>
+    <ul>
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How it works</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/#" class="nav-cta">Join the waitlist</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+
+  <main class="legal">
+    <div class="eyebrow">Legal</div>
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated: June 18, 2026</p>
+
+    <p class="lead">These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of Tend2Thrive, a professional relationship manager operated by McDoCo, LLC. By using Tend2Thrive, you agree to these Terms.</p>
+
+    <div class="callout">
+      Tend2Thrive is operated by <strong>McDoCo, LLC</strong> (&ldquo;McDoCo,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). You can learn more about the company at <a href="https://mcdoco.com">mcdoco.com</a>. In these Terms, &ldquo;you&rdquo; means the person or entity using the service.
+    </div>
+
+    <div class="toc">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#acceptance">Acceptance of these Terms</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#accounts">Accounts and LinkedIn sign-in</a></li>
+        <li><a href="#access">Waitlist and invite-based access</a></li>
+        <li><a href="#your-content">Your content and contacts</a></li>
+        <li><a href="#third-party">Data about other people</a></li>
+        <li><a href="#linkedin">LinkedIn and other third-party services</a></li>
+        <li><a href="#acceptable-use">Acceptable use</a></li>
+        <li><a href="#ip">Intellectual property</a></li>
+        <li><a href="#early-access">Early access and changes to the service</a></li>
+        <li><a href="#disclaimers">Disclaimers</a></li>
+        <li><a href="#liability">Limitation of liability</a></li>
+        <li><a href="#indemnification">Indemnification</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#changes">Changes to these Terms</a></li>
+        <li><a href="#governing-law">Governing law and disputes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <h2 id="acceptance">1. Acceptance of these Terms</h2>
+    <p>By creating an account, joining the waitlist, or otherwise using Tend2Thrive (the &ldquo;Service&rdquo;), you agree to be bound by these Terms and by our <a href="/privacy.html">Privacy Policy</a>, which is incorporated here by reference. If you do not agree, do not use the Service. If you are using the Service on behalf of an organization, you represent that you have authority to bind that organization to these Terms.</p>
+
+    <h2 id="eligibility">2. Eligibility</h2>
+    <p>You must be at least 18 years old and able to form a binding contract to use the Service. The Service is intended for users in the United States. By using the Service, you represent that you meet these requirements.</p>
+
+    <h2 id="accounts">3. Accounts and LinkedIn sign-in</h2>
+    <p>Tend2Thrive uses &ldquo;Sign in with LinkedIn&rdquo; to create and authenticate your account. When you sign in, we receive certain information from LinkedIn as described in our <a href="/privacy.html">Privacy Policy</a>. You are responsible for the activity that occurs under your account and for maintaining the security of the LinkedIn account you use to sign in. Notify us promptly at <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a> if you believe your account has been compromised.</p>
+
+    <h2 id="access">4. Waitlist and invite-based access</h2>
+    <p>Access to Tend2Thrive is offered in stages. You may join a waitlist and begin building your network before full access is granted. Full access is granted by invitation, which is typically extended in person by an existing member who scans your LinkedIn QR code and chooses to invite you.</p>
+    <p>Invitations are personal, limited, and granted at our discretion and the discretion of the inviting member. We make no guarantee that you will receive an invitation or full access, and we may modify, limit, or discontinue the waitlist or invitation system at any time.</p>
+
+    <h2 id="your-content">5. Your content and contacts</h2>
+    <p>The Service lets you record information about your professional relationships &mdash; including contacts, notes, the dates and places you met or last spoke, and reminders (&ldquo;Your Content&rdquo;). As between you and McDoCo, you retain ownership of Your Content.</p>
+    <p>You grant McDoCo a non-exclusive, worldwide, royalty-free license to host, store, process, display, and otherwise use Your Content solely to operate, provide, secure, and improve the Service for you. We do not sell Your Content. You can export or delete Your Content as described in our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+    <h2 id="third-party">6. Data about other people</h2>
+    <p>Tend2Thrive lets you store information about other people who may not be users of the Service. This is a meaningful responsibility, and you agree to the following:</p>
+    <ul>
+      <li>You will only add information about another person that you have lawfully obtained and have the right to store, such as information shared directly with you or that the person has made available to you.</li>
+      <li>You will use that information only for your own legitimate relationship-management purposes and not for unlawful, harassing, or deceptive purposes.</li>
+      <li>You are responsible for responding to any request from a person whose information you have stored, to the extent the law requires it of you, and for honoring any request to stop contacting them.</li>
+      <li>If a person whose information you have stored asks us to remove it, we may do so and may notify you.</li>
+    </ul>
+    <p>You are solely responsible for Your Content and for your interactions with the people in your network. McDoCo does not send messages to your contacts on your behalf except where you expressly direct it (for example, generating an invitation link).</p>
+
+    <h2 id="linkedin">7. LinkedIn and other third-party services</h2>
+    <p>Tend2Thrive integrates with LinkedIn and may integrate with other third-party services. Your use of those services is governed by their own terms and policies, including the <a href="https://www.linkedin.com/legal/user-agreement">LinkedIn User Agreement</a>. You agree to use those integrations in compliance with the applicable third party&rsquo;s terms. We are not responsible for third-party services, and they may change or discontinue access to their data or APIs at any time, which may affect the Service.</p>
+
+    <h2 id="acceptable-use">8. Acceptable use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>use the Service to violate any law or the rights of others, including privacy and intellectual-property rights;</li>
+      <li>scrape, harvest, or collect data from the Service except through features we provide for that purpose, or use the Service to build a competing product;</li>
+      <li>upload or store information you do not have the right to store, or that is unlawful, harassing, or harmful;</li>
+      <li>interfere with, disrupt, probe, or attempt to gain unauthorized access to the Service or its infrastructure;</li>
+      <li>misrepresent your identity or your affiliation with any person or entity; or</li>
+      <li>resell, sublicense, or commercially exploit the Service without our written permission.</li>
+    </ul>
+
+    <h2 id="ip">9. Intellectual property</h2>
+    <p>The Service, including its software, design, text, and trademarks (including the names &ldquo;Tend2Thrive&rdquo; and &ldquo;McDoCo&rdquo;), is owned by McDoCo or its licensors and is protected by intellectual-property laws. Except for the rights expressly granted to you in these Terms, we reserve all rights. These Terms do not grant you any right to use our trademarks without our prior written consent.</p>
+
+    <h2 id="early-access">10. Early access and changes to the service</h2>
+    <p>The Service is offered on an early-access basis and is under active development. Features may be added, changed, or removed, and the Service may contain bugs or be unavailable from time to time. We may change, suspend, or discontinue all or part of the Service at any time.</p>
+
+    <h2 id="disclaimers">11. Disclaimers</h2>
+    <p>THE SERVICE IS PROVIDED &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE,&rdquo; WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE, OR THAT ANY DATA WILL BE ACCURATE OR PRESERVED WITHOUT LOSS.</p>
+
+    <h2 id="liability">12. Limitation of liability</h2>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, McDOCO AND ITS OFFICERS, MEMBERS, EMPLOYEES, AND AGENTS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, DATA, OR GOODWILL, ARISING OUT OF OR RELATING TO YOUR USE OF THE SERVICE. McDOCO&rsquo;S TOTAL LIABILITY FOR ALL CLAIMS RELATING TO THE SERVICE WILL NOT EXCEED THE GREATER OF (A) THE AMOUNTS YOU PAID US FOR THE SERVICE IN THE 12 MONTHS BEFORE THE CLAIM, OR (B) ONE HUNDRED U.S. DOLLARS ($100). SOME JURISDICTIONS DO NOT ALLOW CERTAIN LIMITATIONS, SO SOME OF THE ABOVE MAY NOT APPLY TO YOU.</p>
+
+    <h2 id="indemnification">13. Indemnification</h2>
+    <p>You agree to indemnify and hold harmless McDoCo and its officers, members, employees, and agents from any claims, liabilities, damages, and expenses (including reasonable attorneys&rsquo; fees) arising out of or related to Your Content, your use of the Service, your violation of these Terms, or your violation of any law or the rights of a third party &mdash; including any person whose information you store in the Service.</p>
+
+    <h2 id="termination">14. Termination</h2>
+    <p>You may stop using the Service and delete your account at any time. We may suspend or terminate your access if you violate these Terms, if required by law, or if we discontinue the Service. Upon termination, the rights granted to you under these Terms end. Sections that by their nature should survive termination &mdash; including ownership, disclaimers, limitation of liability, and indemnification &mdash; will survive.</p>
+
+    <h2 id="changes">15. Changes to these Terms</h2>
+    <p>We may update these Terms from time to time. If we make material changes, we will take reasonable steps to notify you, such as by posting a notice in the Service or updating the date above. Your continued use of the Service after the changes take effect means you accept the revised Terms.</p>
+
+    <h2 id="governing-law">16. Governing law and disputes</h2>
+    <p>These Terms are governed by the laws of the State of California, without regard to its conflict-of-laws rules. You agree that any dispute arising out of or relating to these Terms or the Service will be brought exclusively in the state or federal courts located in California, and you consent to the personal jurisdiction of those courts. To the extent permitted by law, you and McDoCo waive any right to a jury trial.</p>
+
+    <h2 id="contact">17. Contact</h2>
+    <p>Questions about these Terms can be directed to:</p>
+    <p>
+      McDoCo, LLC<br />
+      <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a><br />
+      <a href="https://mcdoco.com">mcdoco.com</a>
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      &copy; 2026 Tend2Thrive &mdash; a product of <a href="https://mcdoco.com">McDoCo, LLC</a> &nbsp;&middot;&nbsp;
+      <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
+      <a href="/terms.html">Terms</a> &nbsp;&middot;&nbsp;
+      <a href="mailto:hello@mcdoco.com">Contact</a>
+    </p>
+  </footer>
+
+  </div>
+
+</body>
+</html>

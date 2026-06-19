@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <title>Tend2Thrive — The Professional Relationship Manager</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #004F99;
+      --blue-dark: #003D75;
+      --green: #00BA00;
+      --pale: #eef4fb;
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #d3e2f0;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      line-height: 1.6;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Scrollable page area — everything except the fixed nav */
+    .page {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--blue-dark);
+      background: var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo img {
+      height: 4rem;
+      width: 4rem;
+      display: block;
+      margin-top: -1rem;
+      margin-bottom: -1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    nav a:hover { color: var(--green); }
+
+    .nav-cta {
+      background: transparent;
+      color: #fff !important;
+      border: 1px solid var(--green);
+      padding: 0.5rem 1.1rem;
+      border-radius: 4px;
+    }
+
+    .nav-cta:hover { background: var(--green) !important; color: var(--text) !important; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      background: var(--pale);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.2;
+      max-width: 700px;
+      margin: 0 auto 1.25rem;
+      color: var(--blue);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: 1rem;
+      margin-right: 0.75rem;
+    }
+
+    .btn-primary:hover { background: var(--blue-dark); }
+
+    .btn-secondary {
+      display: inline-block;
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: 1rem;
+    }
+
+    .btn-secondary:hover { background: var(--pale); }
+
+    /* ── Section shared ── */
+    section { padding: 4rem 2rem; }
+
+    .section-label {
+      font-family: system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      max-width: 560px;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .center { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* ── Features ── */
+    .features { background: #fff; }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--green);
+      border-radius: 6px;
+      padding: 1.75rem;
+    }
+
+    .feature-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ── How it works ── */
+    .how { background: var(--pale); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      counter-reset: step;
+    }
+
+    .step { position: relative; }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .step h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ── CTA band ── */
+    .cta-band {
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-band p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--blue);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .btn-white:hover { opacity: 0.9; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--blue); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .btn-primary, .btn-secondary { display: block; text-align: center; margin: 0.4rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="logo"><img src="icon.png" alt="" />tend2thrive</a>
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#" class="nav-cta">Join the waitlist</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Who will you do your best work with?</h1>
+    <p>Tend2Thrive is a Professional Relationship Manager — the memory your network deserves. Built for quality over quantity, and access earned in person.</p>
+    <a href="waitlist" class="btn-primary">Join the waitlist</a>
+    <a href="#how" class="btn-secondary">See how it works</a>
+  </header>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="section-label center">What you get</div>
+    <h2 class="section-heading center">A CRM for people, not deals</h2>
+    <p class="section-sub center">If you won't talk to someone, why are they in your network? Tend2Thrive keeps you honest about who's warm, who's drifted, and who's worth your time.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#128203;</div>
+        <h3>Timeline</h3>
+        <p>A chronological record of every connection — where you met, when you last spoke, private notes only you can see. The memory your network deserves.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128247;</div>
+        <h3>Scanner</h3>
+        <p>Scan a LinkedIn QR code in the moment you meet someone. The connection is recorded instantly — no business cards, no forgotten names.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127807;</div>
+        <h3>Dormancy tracking</h3>
+        <p>See exactly when you last spoke with each person. No judgment — just visibility, so you can decide what to do.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128336;</div>
+        <h3>Touch cadence</h3>
+        <p>Set how often you want to stay in touch. Get a quiet nudge when it's time — never a guilt trip.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128101;</div>
+        <h3>Access earned in person</h3>
+        <p>Full access requires an in-person invite from someone already on the platform. Everyone here was vouched for face to face.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128274;</div>
+        <h3>You control visibility</h3>
+        <p>Choose what's discoverable and by whom. Your data is yours — export it, use the API, or delete everything and leave no trace.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how" id="how">
+    <div class="section-label center">How it works</div>
+    <h2 class="section-heading center">From waitlist to network, step by step.</h2>
+    <p class="section-sub center">You don't need an invite to get started. You just need one to get in.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Sign up and join the waitlist</h3>
+        <p>Log in with LinkedIn. While you wait, start adding your network — manually or via a LinkedIn connections CSV.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Get scanned in person</h3>
+        <p>A Tend2Thrive user scans your LinkedIn QR code. The moment is recorded. If they choose to invite you, a link is generated on the spot.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get full access</h3>
+        <p>Complete signup via the invite link. Your network is already there — contacts you added while waiting are ready to tend.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Tend your network</h3>
+        <p>The timeline shows who's warm and who's drifted. A quiet nudge when it's time to reach out. The conversation happens wherever it makes sense.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="features" id="philosophy" style="background: var(--pale);">
+    <div class="section-label center">Our philosophy</div>
+    <h2 class="section-heading center">What we believe</h2>
+    <p class="section-sub center">A smaller, tended network beats a large, neglected one. Every decision we've made follows from that.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Intentionality over volume</h3>
+        <p>Every contact you add is a deliberate choice. The friction is a feature — it asks you to decide whether they belong.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Visibility, not judgment</h3>
+        <p>Connections go dormant, not deleted. We show you when you last spoke and let you decide what that means.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Access is earned, not assumed</h3>
+        <p>Invites are scarce by design. Everyone on the platform was vouched for in person. That trust starts at the door.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Discoverable on your terms</h3>
+        <p>Visibility is opt-in, never assumed. You control whether others can find you and what they can see.</p>
+      </div>
+      <div class="feature-card">
+        <h3>We don't own the medium</h3>
+        <p>We surface who to reach out to. How you connect — and what you say — is entirely up to you.</p>
+      </div>
+      <div class="feature-card">
+        <h3>You own your history</h3>
+        <p>Export via CSV, API, or agentic integrations. Or retract entirely — your profile, history, and connections deleted permanently.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <div class="cta-band">
+    <h2>Tend your network. <span style="color: var(--green);">Watch it thrive.</span></h2>
+    <p>Sign up with LinkedIn and start building while you wait. Your invite is already out there.</p>
+    <a href="#" class="btn-white">Join the waitlist</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      &copy; 2026 Tend2Thrive &mdash; a product of <a href="https://mcdoco.com">McDoCo, LLC</a> &nbsp;&middot;&nbsp;
+      <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
+      <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp;
+      <a href="mailto:hello@mcdoco.com">Contact</a>
+    </p>
+  </footer>
+
+  </div>
+
+</body>
+</html>
