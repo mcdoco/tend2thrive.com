@@ -218,17 +218,51 @@
     .how { background: var(--pale); }
 
     .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 800px;
+      position: relative;
+      max-width: 640px;
       margin: 0 auto;
-      counter-reset: step;
+      padding-left: 1rem;
+      padding-bottom: 4rem; /* room for the stem to grow down into the pot */
     }
 
-    .step { position: relative; }
+    /* The growing stem */
+    .steps::before {
+      content: "";
+      position: absolute;
+      left: calc(1rem + 1.125rem - 1.5px);
+      top: 1.125rem;
+      bottom: 2.2rem; /* runs down into the soil of the pot */
+      width: 3px;
+      background: var(--green);
+      border-radius: 3px;
+    }
+
+    /* Terracotta pot the stem grows out of */
+    .steps::after {
+      content: "";
+      position: absolute;
+      left: calc(1rem + 1.125rem - 1.6rem); /* 3.2rem-wide pot centred on the stem */
+      bottom: 0.4rem;
+      width: 3.2rem;
+      height: 2.2rem;
+      background: #c4683b;
+      border-top: 0.4rem solid #6b3a1e; /* soil line at the rim */
+      box-sizing: border-box;
+      clip-path: polygon(0 0, 100% 0, 92% 22%, 82% 100%, 18% 100%, 8% 22%);
+    }
+
+    .step {
+      position: relative;
+      padding-left: 3.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .step:last-child { padding-bottom: 0; }
 
     .step-num {
+      position: absolute;
+      left: 0;
+      top: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -240,10 +274,42 @@
       font-family: system-ui, sans-serif;
       font-weight: bold;
       font-size: 0.9rem;
-      margin-bottom: 0.75rem;
+      z-index: 1;
     }
 
-    .step h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    /* Two leaves budding off the stem in the gap below each node */
+    .step:not(:last-child)::before,
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      width: 0.9rem;
+      height: 0.9rem;
+      background: var(--green);
+      opacity: 0.55;
+      z-index: 0;
+    }
+
+    /* upper leaf / lower leaf vertical positions within the gap */
+    .step:not(:last-child)::before { top: calc(2.25rem + 0.45rem); }
+    .step:not(:last-child)::after  { top: calc(2.25rem + 1.45rem); }
+
+    /* right-side leaf — offset 2px off the stem so it doesn't cut through */
+    .step:nth-child(odd):not(:last-child)::before,
+    .step:nth-child(even):not(:last-child)::after {
+      left: calc(1.125rem + 2px);
+      border-radius: 0 100% 0 100%;
+      transform: rotate(-25deg);
+    }
+
+    /* left-side leaf — mirrored, offset 2px off the stem */
+    .step:nth-child(odd):not(:last-child)::after,
+    .step:nth-child(even):not(:last-child)::before {
+      left: calc(1.125rem - 0.9rem - 2px);
+      border-radius: 100% 0 100% 0;
+      transform: rotate(25deg);
+    }
+
+    .step h3 { font-size: 1.05rem; margin-bottom: 0.4rem; padding-top: 0.35rem; }
 
     .step p {
       color: var(--muted);
