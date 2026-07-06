@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<main class="legal">
+  <div class="eyebrow">Blog</div>
+  <h1>{{ page.title }}</h1>
+  <p class="updated">{{ page.date | date: "%B %-d, %Y" }}{% if page.author %} &middot; {{ page.author }}{% endif %}</p>
+
+  {{ content }}
+
+  <a href="/blog/" class="post-back">&larr; All posts</a>
+</main>

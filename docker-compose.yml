@@ -1,0 +1,31 @@
+# Local preview only. GitHub Pages still builds and hosts the real site —
+# this just lets you see changes locally with zero Ruby installed on your
+# machine. Everything (Ruby, Bundler, the toolchain, the gems) lives in the
+# container.
+#
+#   docker compose up      → serves http://localhost:4000, live-reloading
+#   Ctrl-C then compose down to stop.
+#
+# First run pulls the Ruby image and installs gems into a named volume, so
+# it's slow once; every run after is fast because the gems persist.
+
+services:
+  site:
+    # Full Debian-based Ruby (not -slim): the github-pages gem builds native
+    # extensions (sassc, nokogiri, eventmachine) that need gcc/make, which the
+    # full image already has.
+    image: ruby:3.3
+    working_dir: /site
+    # Kept on one line on purpose: a folded (>) block indents the flags further
+    # than `bash`, so YAML preserves the newlines and bash splits the flags off
+    # as separate commands — Jekyll then binds to 127.0.0.1 and is unreachable.
+    command: bash -c "bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling"
+    ports:
+      - "4000:4000"    # the site
+      - "35729:35729"  # livereload websocket
+    volumes:
+      - .:/site                    # your working tree, live
+      - bundle:/usr/local/bundle   # installed gems, cached between runs
+
+volumes:
+  bundle:

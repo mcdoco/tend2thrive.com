@@ -1,0 +1,24 @@
+---
+layout: default
+title: "Blog — Tend2Thrive"
+description: "Events we're part of and how Tend2Thrive is growing."
+---
+<main class="legal">
+  <div class="eyebrow">Blog</div>
+  <h1>News &amp; progress</h1>
+  <p class="lead">Events we're part of and how the product is growing. Follow along with <a href="/feed.xml">RSS</a>.</p>
+
+  {% if site.posts.size == 0 %}
+    <p>No posts yet — check back soon.</p>
+  {% else %}
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}"><h2>{{ post.title }}</h2></a>
+          <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}{% if post.author %} &middot; {{ post.author }}{% endif %}</p>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</main>

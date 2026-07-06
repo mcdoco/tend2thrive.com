@@ -1,392 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" media="(prefers-color-scheme: light)">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-light.png" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-light.png" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-light.png" media="(prefers-color-scheme: dark)">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <title>Privacy Policy — Tend2Thrive</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+---
+layout: default
+title: "Privacy Policy — Tend2Thrive"
+description: "How Tend2Thrive collects, uses, and shares personal information, and the choices you have."
+---
 
-    :root {
-      --blue: #004F99;
-      --blue-dark: #003D75;
-      --green: #00BA00;
-      --pale: #eef4fb;
-      --text: #1a1a1a;
-      --muted: #555;
-      --border: #d3e2f0;
-    }
+<main class="legal">
+  <div class="eyebrow">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 18, 2026</p>
 
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--text);
-      line-height: 1.6;
-      height: 100vh;
-      height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
+  <p class="lead">This Privacy Policy explains how Tend2Thrive collects, uses, and shares personal information, and the choices you have. Tend2Thrive is operated by McDoCo, LLC.</p>
 
-    /* Scrollable page area — everything except the fixed nav */
-    .page {
-      flex: 1;
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* ── Nav ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2rem;
-      border-bottom: 1px solid var(--blue-dark);
-      background: var(--blue);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 1.35rem;
-      font-weight: bold;
-      color: #fff;
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .logo img {
-      height: 4rem;
-      width: 4rem;
-      display: block;
-      margin-top: -1rem;
-      margin-bottom: -1rem;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      font-family: system-ui, sans-serif;
-      font-size: 0.9rem;
-    }
-
-    nav a { text-decoration: none; color: #fff; }
-    nav a:hover { color: var(--green); }
-
-    .nav-cta {
-      background: transparent;
-      color: #fff !important;
-      border: 1px solid var(--green);
-      padding: 0.5rem 1.1rem;
-      border-radius: 4px;
-    }
-    .nav-cta:hover { background: var(--green) !important; color: var(--text) !important; }
-
-    /* ── Legal content ── */
-    .legal {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 3.5rem 2rem 4rem;
-    }
-
-    .legal .eyebrow {
-      font-family: system-ui, sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--blue);
-      margin-bottom: 0.75rem;
-    }
-
-    .legal h1 {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      color: var(--blue);
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-    }
-
-    .legal .updated {
-      font-family: system-ui, sans-serif;
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-    }
-
-    .legal h2 {
-      font-size: 1.35rem;
-      color: var(--blue);
-      margin: 2.5rem 0 0.75rem;
-    }
-
-    .legal h3 {
-      font-size: 1.05rem;
-      margin: 1.5rem 0 0.5rem;
-    }
-
-    .legal p, .legal li {
-      color: var(--text);
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .legal ul, .legal ol { padding-left: 1.5rem; margin-bottom: 1rem; }
-    .legal li { margin-bottom: 0.5rem; }
-
-    .legal a { color: var(--blue); }
-
-    .legal .lead {
-      font-size: 1.1rem;
-      color: var(--muted);
-    }
-
-    .callout {
-      background: var(--pale);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--green);
-      border-radius: 6px;
-      padding: 1.25rem 1.5rem;
-      margin: 1.5rem 0;
-      font-family: system-ui, sans-serif;
-      font-size: 0.95rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0 1.5rem;
-      font-family: system-ui, sans-serif;
-      font-size: 0.9rem;
-    }
-    th, td {
-      border: 1px solid var(--border);
-      padding: 0.65rem 0.85rem;
-      text-align: left;
-      vertical-align: top;
-    }
-    th { background: var(--pale); color: var(--blue); }
-
-    .toc {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.5rem;
-      margin-bottom: 2.5rem;
-      font-family: system-ui, sans-serif;
-      font-size: 0.95rem;
-    }
-    .toc strong { display: block; margin-bottom: 0.5rem; }
-    .toc ol { padding-left: 1.25rem; margin: 0; }
-    .toc li { margin-bottom: 0.3rem; }
-    .toc a { color: var(--muted); text-decoration: none; }
-    .toc a:hover { color: var(--blue); }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      font-family: system-ui, sans-serif;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--blue); }
-
-    @media (max-width: 600px) {
-      nav ul { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Nav -->
-  <nav>
-    <a href="/" class="logo"><img src="icon.png" alt="" />tend2thrive</a>
-    <ul>
-      <li><a href="/#features">Features</a></li>
-      <li><a href="/#how">How it works</a></li>
-      <li><a href="/terms.html">Terms</a></li>
-      <li><a href="/#" class="nav-cta">Join the waitlist</a></li>
-    </ul>
-  </nav>
-
-  <div class="page">
-
-  <main class="legal">
-    <div class="eyebrow">Legal</div>
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: June 18, 2026</p>
-
-    <p class="lead">This Privacy Policy explains how Tend2Thrive collects, uses, and shares personal information, and the choices you have. Tend2Thrive is operated by McDoCo, LLC.</p>
-
-    <div class="callout">
-      <strong>The short version.</strong> We collect what we need to run a professional relationship manager: who you are (via LinkedIn sign-in), the contacts and notes you choose to store, and basic usage data. We do not sell your personal information. You can export or delete your data at any time. Questions: <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a>.
-    </div>
-
-    <div class="toc">
-      <strong>Contents</strong>
-      <ol>
-        <li><a href="#who">Who we are</a></li>
-        <li><a href="#what">Information we collect</a></li>
-        <li><a href="#linkedin">Information from LinkedIn sign-in</a></li>
-        <li><a href="#contacts">Information about your contacts</a></li>
-        <li><a href="#use">How we use information</a></li>
-        <li><a href="#share">How we share information</a></li>
-        <li><a href="#sell">We do not sell or &ldquo;share&rdquo; your information</a></li>
-        <li><a href="#retention">How long we keep information</a></li>
-        <li><a href="#choices">Your choices and controls</a></li>
-        <li><a href="#ccpa">Your California privacy rights</a></li>
-        <li><a href="#non-users">If you are not a Tend2Thrive user</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#children">Children</a></li>
-        <li><a href="#changes">Changes to this policy</a></li>
-        <li><a href="#contact">Contact us</a></li>
-      </ol>
-    </div>
-
-    <h2 id="who">1. Who we are</h2>
-    <p>Tend2Thrive is a professional relationship manager operated by McDoCo, LLC (&ldquo;McDoCo,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;). For purposes of California privacy law, McDoCo is the &ldquo;business&rdquo; responsible for the personal information described here. You can reach us at <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a> or learn more at <a href="https://mcdoco.com">mcdoco.com</a>.</p>
-    <p>This policy is written for users and visitors in the United States.</p>
-
-    <h2 id="what">2. Information we collect</h2>
-    <p>We collect the following categories of personal information:</p>
-    <table>
-      <thead>
-        <tr><th>Category</th><th>Examples</th><th>Source</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Identifiers &amp; account data</td>
-          <td>Name, email address, profile photo, and a LinkedIn member identifier</td>
-          <td>You, via LinkedIn sign-in</td>
-        </tr>
-        <tr>
-          <td>Relationship data (&ldquo;Your Content&rdquo;)</td>
-          <td>Contacts you add, notes, where and when you met or last spoke, reminders, touch cadence</td>
-          <td>You; in-person QR scans you perform; files you import</td>
-        </tr>
-        <tr>
-          <td>Connection metadata</td>
-          <td>A link between a contact&rsquo;s LinkedIn profile address and their account, recorded when an invited person signs in</td>
-          <td>You (scan) and the invited person (sign-in)</td>
-        </tr>
-        <tr>
-          <td>Usage &amp; device data</td>
-          <td>Log data, IP address, browser/device type, pages and features used, timestamps</td>
-          <td>Automatically</td>
-        </tr>
-        <tr>
-          <td>Communications</td>
-          <td>Messages you send us, support requests, waitlist sign-ups</td>
-          <td>You</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>We use only essential cookies and similar technologies needed to keep you signed in and to keep the Service secure. If we add analytics or other non-essential cookies in the future, we will update this policy and provide any choices the law requires.</p>
-
-    <h2 id="linkedin">3. Information from LinkedIn sign-in</h2>
-    <p>We use &ldquo;Sign in with LinkedIn&rdquo; to authenticate you. When you sign in, LinkedIn shares a limited set of information with us based on the permissions you grant &mdash; typically your name, profile picture, email address, and a member identifier that is unique to Tend2Thrive. We do not receive your LinkedIn password, and we do not access your LinkedIn messages or post on your behalf.</p>
-    <p>Your use of LinkedIn is governed by LinkedIn&rsquo;s own terms and privacy policy. We use information from LinkedIn only to operate the Service as described here.</p>
-
-    <h2 id="contacts">4. Information about your contacts</h2>
-    <p>Tend2Thrive is a tool for managing your professional relationships, so you may store information about other people &mdash; including people who are not Tend2Thrive users. When you add a contact, scan a LinkedIn QR code in person, or import contact information, we store that information on your behalf so we can provide the Service to you.</p>
-    <p>For this information, you direct what is collected and stored. You are responsible for having the right to store it and for using it appropriately, as described in our <a href="/terms.html">Terms of Service</a>. We act on your behalf to host and process it, and we do not use the contact information you store to build a separate marketing database or to contact your contacts on our own initiative.</p>
-    <p>If you are a non-user and want to know about or remove information someone has stored about you, see <a href="#non-users">Section 11</a>.</p>
-
-    <h2 id="use">5. How we use information</h2>
-    <ul>
-      <li>To provide, maintain, and secure the Service, including authentication and your relationship timeline, reminders, and dormancy tracking;</li>
-      <li>To operate the waitlist and the invitation system, including generating invite links you choose to send;</li>
-      <li>To respond to your requests and provide support;</li>
-      <li>To monitor, debug, and improve the Service and develop new features;</li>
-      <li>To detect, prevent, and address fraud, abuse, security incidents, and violations of our Terms; and</li>
-      <li>To comply with legal obligations and enforce our agreements.</li>
-    </ul>
-
-    <h2 id="share">6. How we share information</h2>
-    <p>We share personal information only in these circumstances:</p>
-    <ul>
-      <li><strong>Service providers.</strong> Vendors who process information on our behalf to run the Service &mdash; such as hosting, database, email delivery, and authentication providers &mdash; under contracts that limit their use of the information to providing services to us.</li>
-      <li><strong>At your direction.</strong> When you choose to make yourself discoverable, send an invitation, or otherwise share information through a feature of the Service.</li>
-      <li><strong>Legal and safety.</strong> When we believe disclosure is required by law or legal process, or is necessary to protect the rights, safety, or property of McDoCo, our users, or others.</li>
-      <li><strong>Business transfers.</strong> In connection with a merger, acquisition, financing, or sale of assets, subject to this policy.</li>
-    </ul>
-
-    <h2 id="sell">7. We do not sell or &ldquo;share&rdquo; your information</h2>
-    <p>We do not sell your personal information, and we do not &ldquo;share&rdquo; it for cross-context behavioral advertising, as those terms are defined under California law. We have not done so in the preceding 12 months. We also do not use or disclose sensitive personal information for purposes beyond those permitted under California law.</p>
-
-    <h2 id="retention">8. How long we keep information</h2>
-    <p>We keep personal information for as long as your account is active or as needed to provide the Service. When you delete specific content, we delete it from active systems and remove it from routine backups on our standard backup cycle. When you delete your account, we delete or de-identify the personal information associated with it, except where we need to retain certain information to comply with legal obligations, resolve disputes, prevent abuse, or enforce our agreements.</p>
-
-    <h2 id="choices">9. Your choices and controls</h2>
-    <ul>
-      <li><strong>Access and edit.</strong> You can view and edit the contacts, notes, and account details you store in the Service.</li>
-      <li><strong>Export.</strong> You can export Your Content, including via CSV and supported integrations.</li>
-      <li><strong>Delete.</strong> You can delete individual contacts or notes, or delete your entire account, which removes your profile, history, and connections as described in Section 8.</li>
-      <li><strong>Discoverability.</strong> Being discoverable to other users is opt-in. You control whether others can find you and what they see.</li>
-      <li><strong>Communications.</strong> You can opt out of non-essential emails using the unsubscribe link or by contacting us. We may still send service and security messages.</li>
-    </ul>
-
-    <h2 id="ccpa">10. Your California privacy rights</h2>
-    <p>If you are a California resident, the California Consumer Privacy Act, as amended by the California Privacy Rights Act (collectively, the &ldquo;CCPA&rdquo;), gives you the following rights:</p>
-    <ul>
-      <li><strong>Right to know.</strong> To request the categories and specific pieces of personal information we have collected about you, the sources, the purposes, and the categories of third parties to whom we disclose it.</li>
-      <li><strong>Right to delete.</strong> To request that we delete personal information we collected from you, subject to certain exceptions.</li>
-      <li><strong>Right to correct.</strong> To request that we correct inaccurate personal information we maintain about you.</li>
-      <li><strong>Right to opt out of sale/sharing.</strong> We do not sell or share personal information, so there is nothing to opt out of, but you retain this right.</li>
-      <li><strong>Right to limit use of sensitive personal information.</strong> We do not use sensitive personal information for purposes that would trigger this right.</li>
-      <li><strong>Right to non-discrimination.</strong> We will not discriminate against you for exercising any of these rights.</li>
-    </ul>
-    <p><strong>How to exercise your rights.</strong> Email us at <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a>. We will verify your request, typically by confirming control of the email or LinkedIn account associated with your data, before acting on it. You may use an authorized agent to submit a request on your behalf with proof of authorization. We will respond within the timeframes the CCPA requires (generally 45 days, with the possibility of an extension).</p>
-    <p>California&rsquo;s &ldquo;Shine the Light&rdquo; law: because we do not share personal information with third parties for their own direct-marketing purposes, no separate disclosure is required.</p>
-
-    <h2 id="non-users">11. If you are not a Tend2Thrive user</h2>
-    <p>A Tend2Thrive user may store information about you as one of their professional contacts. In that case, the user directs what is stored, and you may wish to contact them directly. You may also contact us at <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a> to ask what information about you we may hold and to request its deletion, and we will respond consistent with applicable law and, where appropriate, coordinate with the user who stored it. If you are a California resident, the rights in Section 10 are available to you as well.</p>
-
-    <h2 id="security">12. Security</h2>
-    <p>We use reasonable administrative, technical, and physical safeguards designed to protect personal information, including encryption in transit and access controls. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
-
-    <h2 id="children">13. Children</h2>
-    <p>The Service is not directed to children under 18, and we do not knowingly collect personal information from them. If you believe a child has provided us personal information, contact us and we will delete it.</p>
-
-    <h2 id="changes">14. Changes to this policy</h2>
-    <p>We may update this policy from time to time. If we make material changes, we will take reasonable steps to notify you, such as by posting a notice in the Service or updating the date at the top. Your continued use of the Service after the changes take effect means you accept the updated policy.</p>
-
-    <h2 id="contact">15. Contact us</h2>
-    <p>For privacy questions or to exercise your rights:</p>
-    <p>
-      McDoCo, LLC<br />
-      <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a><br />
-      <a href="https://mcdoco.com">mcdoco.com</a>
-    </p>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>
-      &copy; 2026 Tend2Thrive &mdash; a product of <a href="https://mcdoco.com">McDoCo, LLC</a> &nbsp;&middot;&nbsp;
-      <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
-      <a href="/terms.html">Terms</a> &nbsp;&middot;&nbsp;
-      <a href="mailto:hello@mcdoco.com">Contact</a>
-    </p>
-  </footer>
-
+  <div class="callout">
+    <strong>The short version.</strong> We collect what we need to run a professional relationship manager: who you are (via LinkedIn sign-in), the contacts and notes you choose to store, and basic usage data. We do not sell your personal information. You can export or delete your data at any time. Questions: <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a>.
   </div>
 
-</body>
-</html>
+  <div class="toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#who">Who we are</a></li>
+      <li><a href="#what">Information we collect</a></li>
+      <li><a href="#linkedin">Information from LinkedIn sign-in</a></li>
+      <li><a href="#contacts">Information about your contacts</a></li>
+      <li><a href="#use">How we use information</a></li>
+      <li><a href="#share">How we share information</a></li>
+      <li><a href="#sell">We do not sell or &ldquo;share&rdquo; your information</a></li>
+      <li><a href="#retention">How long we keep information</a></li>
+      <li><a href="#choices">Your choices and controls</a></li>
+      <li><a href="#ccpa">Your California privacy rights</a></li>
+      <li><a href="#non-users">If you are not a Tend2Thrive user</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </div>
+
+  <h2 id="who">1. Who we are</h2>
+  <p>Tend2Thrive is a professional relationship manager operated by McDoCo, LLC (&ldquo;McDoCo,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;). For purposes of California privacy law, McDoCo is the &ldquo;business&rdquo; responsible for the personal information described here. You can reach us at <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a> or learn more at <a href="https://mcdoco.com">mcdoco.com</a>.</p>
+  <p>This policy is written for users and visitors in the United States.</p>
+
+  <h2 id="what">2. Information we collect</h2>
+  <p>We collect the following categories of personal information:</p>
+  <table>
+    <thead>
+      <tr><th>Category</th><th>Examples</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Identifiers &amp; account data</td>
+        <td>Name, email address, profile photo, and a LinkedIn member identifier</td>
+        <td>You, via LinkedIn sign-in</td>
+      </tr>
+      <tr>
+        <td>Relationship data (&ldquo;Your Content&rdquo;)</td>
+        <td>Contacts you add, notes, where and when you met or last spoke, reminders, touch cadence</td>
+        <td>You; in-person QR scans you perform; files you import</td>
+      </tr>
+      <tr>
+        <td>Connection metadata</td>
+        <td>A link between a contact&rsquo;s LinkedIn profile address and their account, recorded when an invited person signs in</td>
+        <td>You (scan) and the invited person (sign-in)</td>
+      </tr>
+      <tr>
+        <td>Usage &amp; device data</td>
+        <td>Log data, IP address, browser/device type, pages and features used, timestamps</td>
+        <td>Automatically</td>
+      </tr>
+      <tr>
+        <td>Communications</td>
+        <td>Messages you send us, support requests, waitlist sign-ups</td>
+        <td>You</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>We use only essential cookies and similar technologies needed to keep you signed in and to keep the Service secure. If we add analytics or other non-essential cookies in the future, we will update this policy and provide any choices the law requires.</p>
+
+  <h2 id="linkedin">3. Information from LinkedIn sign-in</h2>
+  <p>We use &ldquo;Sign in with LinkedIn&rdquo; to authenticate you. When you sign in, LinkedIn shares a limited set of information with us based on the permissions you grant &mdash; typically your name, profile picture, email address, and a member identifier that is unique to Tend2Thrive. We do not receive your LinkedIn password, and we do not access your LinkedIn messages or post on your behalf.</p>
+  <p>Your use of LinkedIn is governed by LinkedIn&rsquo;s own terms and privacy policy. We use information from LinkedIn only to operate the Service as described here.</p>
+
+  <h2 id="contacts">4. Information about your contacts</h2>
+  <p>Tend2Thrive is a tool for managing your professional relationships, so you may store information about other people &mdash; including people who are not Tend2Thrive users. When you add a contact, scan a LinkedIn QR code in person, or import contact information, we store that information on your behalf so we can provide the Service to you.</p>
+  <p>For this information, you direct what is collected and stored. You are responsible for having the right to store it and for using it appropriately, as described in our <a href="/terms.html">Terms of Service</a>. We act on your behalf to host and process it, and we do not use the contact information you store to build a separate marketing database or to contact your contacts on our own initiative.</p>
+  <p>If you are a non-user and want to know about or remove information someone has stored about you, see <a href="#non-users">Section 11</a>.</p>
+
+  <h2 id="use">5. How we use information</h2>
+  <ul>
+    <li>To provide, maintain, and secure the Service, including authentication and your relationship timeline, reminders, and dormancy tracking;</li>
+    <li>To operate the waitlist and the invitation system, including generating invite links you choose to send;</li>
+    <li>To respond to your requests and provide support;</li>
+    <li>To monitor, debug, and improve the Service and develop new features;</li>
+    <li>To detect, prevent, and address fraud, abuse, security incidents, and violations of our Terms; and</li>
+    <li>To comply with legal obligations and enforce our agreements.</li>
+  </ul>
+
+  <h2 id="share">6. How we share information</h2>
+  <p>We share personal information only in these circumstances:</p>
+  <ul>
+    <li><strong>Service providers.</strong> Vendors who process information on our behalf to run the Service &mdash; such as hosting, database, email delivery, and authentication providers &mdash; under contracts that limit their use of the information to providing services to us.</li>
+    <li><strong>At your direction.</strong> When you choose to make yourself discoverable, send an invitation, or otherwise share information through a feature of the Service.</li>
+    <li><strong>Legal and safety.</strong> When we believe disclosure is required by law or legal process, or is necessary to protect the rights, safety, or property of McDoCo, our users, or others.</li>
+    <li><strong>Business transfers.</strong> In connection with a merger, acquisition, financing, or sale of assets, subject to this policy.</li>
+  </ul>
+
+  <h2 id="sell">7. We do not sell or &ldquo;share&rdquo; your information</h2>
+  <p>We do not sell your personal information, and we do not &ldquo;share&rdquo; it for cross-context behavioral advertising, as those terms are defined under California law. We have not done so in the preceding 12 months. We also do not use or disclose sensitive personal information for purposes beyond those permitted under California law.</p>
+
+  <h2 id="retention">8. How long we keep information</h2>
+  <p>We keep personal information for as long as your account is active or as needed to provide the Service. When you delete specific content, we delete it from active systems and remove it from routine backups on our standard backup cycle. When you delete your account, we delete or de-identify the personal information associated with it, except where we need to retain certain information to comply with legal obligations, resolve disputes, prevent abuse, or enforce our agreements.</p>
+
+  <h2 id="choices">9. Your choices and controls</h2>
+  <ul>
+    <li><strong>Access and edit.</strong> You can view and edit the contacts, notes, and account details you store in the Service.</li>
+    <li><strong>Export.</strong> You can export Your Content, including via CSV and supported integrations.</li>
+    <li><strong>Delete.</strong> You can delete individual contacts or notes, or delete your entire account, which removes your profile, history, and connections as described in Section 8.</li>
+    <li><strong>Discoverability.</strong> Being discoverable to other users is opt-in. You control whether others can find you and what they see.</li>
+    <li><strong>Communications.</strong> You can opt out of non-essential emails using the unsubscribe link or by contacting us. We may still send service and security messages.</li>
+  </ul>
+
+  <h2 id="ccpa">10. Your California privacy rights</h2>
+  <p>If you are a California resident, the California Consumer Privacy Act, as amended by the California Privacy Rights Act (collectively, the &ldquo;CCPA&rdquo;), gives you the following rights:</p>
+  <ul>
+    <li><strong>Right to know.</strong> To request the categories and specific pieces of personal information we have collected about you, the sources, the purposes, and the categories of third parties to whom we disclose it.</li>
+    <li><strong>Right to delete.</strong> To request that we delete personal information we collected from you, subject to certain exceptions.</li>
+    <li><strong>Right to correct.</strong> To request that we correct inaccurate personal information we maintain about you.</li>
+    <li><strong>Right to opt out of sale/sharing.</strong> We do not sell or share personal information, so there is nothing to opt out of, but you retain this right.</li>
+    <li><strong>Right to limit use of sensitive personal information.</strong> We do not use sensitive personal information for purposes that would trigger this right.</li>
+    <li><strong>Right to non-discrimination.</strong> We will not discriminate against you for exercising any of these rights.</li>
+  </ul>
+  <p><strong>How to exercise your rights.</strong> Email us at <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a>. We will verify your request, typically by confirming control of the email or LinkedIn account associated with your data, before acting on it. You may use an authorized agent to submit a request on your behalf with proof of authorization. We will respond within the timeframes the CCPA requires (generally 45 days, with the possibility of an extension).</p>
+  <p>California&rsquo;s &ldquo;Shine the Light&rdquo; law: because we do not share personal information with third parties for their own direct-marketing purposes, no separate disclosure is required.</p>
+
+  <h2 id="non-users">11. If you are not a Tend2Thrive user</h2>
+  <p>A Tend2Thrive user may store information about you as one of their professional contacts. In that case, the user directs what is stored, and you may wish to contact them directly. You may also contact us at <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a> to ask what information about you we may hold and to request its deletion, and we will respond consistent with applicable law and, where appropriate, coordinate with the user who stored it. If you are a California resident, the rights in Section 10 are available to you as well.</p>
+
+  <h2 id="security">12. Security</h2>
+  <p>We use reasonable administrative, technical, and physical safeguards designed to protect personal information, including encryption in transit and access controls. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
+
+  <h2 id="children">13. Children</h2>
+  <p>The Service is not directed to children under 18, and we do not knowingly collect personal information from them. If you believe a child has provided us personal information, contact us and we will delete it.</p>
+
+  <h2 id="changes">14. Changes to this policy</h2>
+  <p>We may update this policy from time to time. If we make material changes, we will take reasonable steps to notify you, such as by posting a notice in the Service or updating the date at the top. Your continued use of the Service after the changes take effect means you accept the updated policy.</p>
+
+  <h2 id="contact">15. Contact us</h2>
+  <p>For privacy questions or to exercise your rights:</p>
+  <p>
+    McDoCo, LLC<br />
+    <a href="mailto:hello@mcdoco.com">hello@mcdoco.com</a><br />
+    <a href="https://mcdoco.com">mcdoco.com</a>
+  </p>
+</main>

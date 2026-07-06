@@ -1,0 +1,11 @@
+# Jekyll build output and caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Local Ruby gems (bundle install --path vendor/bundle)
+vendor/
+Gemfile.lock
+
+# Working docs not meant for the site
+positioning.md

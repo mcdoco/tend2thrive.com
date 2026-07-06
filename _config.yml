@@ -1,0 +1,35 @@
+title: Tend2Thrive
+description: The professional relationship manager. Grow your network like a garden.
+url: https://tend2thrive.com
+lang: en
+author: McDoCo, LLC
+
+# Blog posts publish under /blog/YYYY/MM/DD/title/. This is scoped to posts via
+# `defaults` on purpose — a global `permalink:` ending in "/" also rewrites
+# plain pages (hosts.html -> /hosts/), which 404s the nav and footer links.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      permalink: /blog/:year/:month/:day/:title/
+
+# GitHub Pages builds this natively — no CI needed.
+# jekyll-feed is on the github-pages allowlist and generates /feed.xml.
+plugins:
+  - jekyll-feed
+
+feed:
+  path: feed.xml
+
+# Show a short excerpt on the blog index (first paragraph).
+excerpt_separator: "\n\n"
+
+# Files that must not be published.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - positioning.md
+  - .gitignore

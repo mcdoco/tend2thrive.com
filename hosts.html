@@ -1,490 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" media="(prefers-color-scheme: light)">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-light.png" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-light.png" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-light.png" media="(prefers-color-scheme: dark)">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+---
+layout: default
+title: "Tend2Thrive for Hosts - The room where relationships start"
+description: "Give your guests a real record of everyone they met, make the introductions that matter, and see how many connections your event created."
+---
 
-  <title>Tend2Thrive for Hosts - The room where relationships start</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!-- Hero -->
+<header class="hero">
+  <h1>From handshakes to history</h1>
+  <p>Give your guests a real record of everyone they met, make the introductions that matter, and see how many connections your event created.</p>
+  <a href="mailto:hello@mcdoco.com" class="btn-primary">Bring your event on</a>
+  <a href="#how" class="btn-secondary">See how it works</a>
+</header>
 
-    :root {
-      --blue: #004F99;
-      --blue-dark: #003D75;
-      --green: #00BA00;
-      --pale: #eef4fb;
-      --text: #1a1a1a;
-      --muted: #555;
-      --border: #d3e2f0;
-    }
+<!-- Why hosts -->
+<section class="features" id="why">
+  <div class="section-label center">Why hosts</div>
+  <h2 class="section-heading center">Run events people remember</h2>
+  <p class="section-sub center">The best events end with people who were genuinely glad to meet - then walk out and forget. Tend2Thrive gives your guests a lasting record of who they met, hands you the introductions that matter, and shows you the connections your event created.</p>
 
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--text);
-      line-height: 1.6;
-      height: 100vh;
-      height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    /* Scrollable page area - everything except the fixed nav */
-    .page {
-      flex: 1;
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* ── Nav ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2rem;
-      border-bottom: 1px solid var(--blue-dark);
-      background: var(--blue);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 1.35rem;
-      font-weight: bold;
-      color: #fff;
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .logo img {
-      height: 4rem;
-      width: 4rem;
-      display: block;
-      margin-top: -1rem;
-      margin-bottom: -1rem;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      font-family: system-ui, sans-serif;
-      font-size: 0.9rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #fff;
-    }
-
-    nav a:hover { color: var(--green); }
-
-    .nav-cta {
-      background: transparent;
-      color: #fff !important;
-      border: 1px solid var(--green);
-      padding: 0.5rem 1.1rem;
-      border-radius: 4px;
-    }
-
-    .nav-cta:hover { background: var(--green) !important; color: var(--text) !important; }
-
-    /* ── Hero ── */
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem 4rem;
-      background: var(--pale);
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.2;
-      max-width: 700px;
-      margin: 0 auto 1.25rem;
-      color: var(--blue);
-      text-wrap: balance;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--blue);
-      color: #fff;
-      padding: 0.85rem 2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-family: system-ui, sans-serif;
-      font-size: 1rem;
-      margin-right: 0.75rem;
-    }
-
-    .btn-primary:hover { background: var(--blue-dark); }
-
-    .btn-secondary {
-      display: inline-block;
-      color: var(--blue);
-      border: 1px solid var(--blue);
-      padding: 0.85rem 2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-family: system-ui, sans-serif;
-      font-size: 1rem;
-    }
-
-    .btn-secondary:hover { background: var(--pale); }
-
-    /* ── Section shared ── */
-    section { padding: 4rem 2rem; }
-
-    .section-label {
-      font-family: system-ui, sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--blue);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-heading {
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
-      max-width: 560px;
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-      font-size: 1.05rem;
-    }
-
-    .center { text-align: center; margin-left: auto; margin-right: auto; }
-
-    /* ── Features ── */
-    .features { background: #fff; }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
-      border: 1px solid var(--border);
-      border-top: 3px solid var(--green);
-      border-radius: 6px;
-      padding: 1.75rem;
-    }
-
-    .feature-icon {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-      text-align: center;
-    }
-
-    .feature-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-family: system-ui, sans-serif;
-    }
-
-    /* ── How it works ── */
-    .how { background: var(--pale); }
-
-    .steps {
-      position: relative;
-      max-width: 640px;
-      margin: 0 auto;
-      padding-left: 1rem;
-      padding-bottom: 4rem; /* room for the stem to grow down into the pot */
-    }
-
-    /* The growing stem */
-    .steps::before {
-      content: "";
-      position: absolute;
-      left: calc(1rem + 1.125rem - 1.5px);
-      top: 1.125rem;
-      bottom: 2.2rem; /* runs down into the soil of the pot */
-      width: 3px;
-      background: var(--green);
-      border-radius: 3px;
-    }
-
-    /* Terracotta pot the stem grows out of */
-    .steps::after {
-      content: "";
-      position: absolute;
-      left: calc(1rem + 1.125rem - 1.6rem); /* 3.2rem-wide pot centred on the stem */
-      bottom: 0.4rem;
-      width: 3.2rem;
-      height: 2.2rem;
-      background: #c4683b;
-      border-top: 0.4rem solid #6b3a1e; /* soil line at the rim */
-      box-sizing: border-box;
-      clip-path: polygon(0 0, 100% 0, 92% 22%, 82% 100%, 18% 100%, 8% 22%);
-    }
-
-    .step {
-      position: relative;
-      padding-left: 3.5rem;
-      padding-bottom: 2.5rem;
-    }
-
-    .step:last-child { padding-bottom: 0; }
-
-    .step-num {
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 50%;
-      background: var(--green);
-      color: var(--text);
-      font-family: system-ui, sans-serif;
-      font-weight: bold;
-      font-size: 0.9rem;
-      z-index: 1;
-    }
-
-    /* Two leaves budding off the stem in the gap below each node */
-    .step:not(:last-child)::before,
-    .step:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      width: 0.9rem;
-      height: 0.9rem;
-      background: var(--green);
-      opacity: 0.55;
-      z-index: 0;
-    }
-
-    /* upper leaf / lower leaf vertical positions within the gap */
-    .step:not(:last-child)::before { top: calc(2.25rem + 0.45rem); }
-    .step:not(:last-child)::after  { top: calc(2.25rem + 1.45rem); }
-
-    /* right-side leaf - offset 2px off the stem so it doesn't cut through */
-    .step:nth-child(odd):not(:last-child)::before,
-    .step:nth-child(even):not(:last-child)::after {
-      left: calc(1.125rem + 2px);
-      border-radius: 0 100% 0 100%;
-      transform: rotate(-25deg);
-    }
-
-    /* left-side leaf - mirrored, offset 2px off the stem */
-    .step:nth-child(odd):not(:last-child)::after,
-    .step:nth-child(even):not(:last-child)::before {
-      left: calc(1.125rem - 0.9rem - 2px);
-      border-radius: 100% 0 100% 0;
-      transform: rotate(25deg);
-    }
-
-    .step h3 { font-size: 1.05rem; margin-bottom: 0.4rem; padding-top: 0.35rem; }
-
-    .step p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-family: system-ui, sans-serif;
-    }
-
-    /* ── CTA band ── */
-    .cta-band {
-      background: var(--blue);
-      color: #fff;
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-
-    .cta-band h2 {
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
-      margin-bottom: 0.75rem;
-    }
-
-    .cta-band p {
-      font-size: 1.05rem;
-      opacity: 0.85;
-      max-width: 480px;
-      margin: 0 auto 2rem;
-    }
-
-    .btn-white {
-      display: inline-block;
-      background: #fff;
-      color: var(--blue);
-      padding: 0.85rem 2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-family: system-ui, sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .btn-white:hover { opacity: 0.9; }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      font-family: system-ui, sans-serif;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--blue); }
-
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      nav ul { display: none; }
-      .btn-primary, .btn-secondary { display: block; text-align: center; margin: 0.4rem 0; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Nav -->
-  <nav>
-    <a href="index.html" class="logo"><img src="icon.png" alt="" />tend2thrive</a>
-    <ul>
-      <li><a href="#why">Why hosts</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="index.html">For individuals</a></li>
-      <li><a href="mailto:hello@mcdoco.com" class="nav-cta">Get in touch</a></li>
-    </ul>
-  </nav>
-
-  <div class="page">
-
-  <!-- Hero -->
-  <header class="hero">
-    <h1>From handshakes to history</h1>
-    <p>Give your guests a real record of everyone they met, make the introductions that matter, and see how many connections your event created.</p>
-    <a href="mailto:hello@mcdoco.com" class="btn-primary">Bring your event on</a>
-    <a href="#how" class="btn-secondary">See how it works</a>
-  </header>
-
-  <!-- Why hosts -->
-  <section class="features" id="why">
-    <div class="section-label center">Why hosts</div>
-    <h2 class="section-heading center">Run events people remember</h2>
-    <p class="section-sub center">The best events end with people who were genuinely glad to meet - then walk out and forget. Tend2Thrive gives your guests a lasting record of who they met, hands you the introductions that matter, and shows you the connections your event created.</p>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">&#129309;</div>
-        <h3>Broker the introductions</h3>
-        <p>See who's opted in to meet, then introduce two people in a tap - each gets your note on why, in the app. Warm intros during your event, not left to chance and a name tag.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#127793;</div>
-        <h3>Your event, the common thread</h3>
-        <p>Guests join through your event and make their connections during it - so it's the room every one of those relationships traces back to.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128200;</div>
-        <h3>See the connections you created</h3>
-        <p>Networking is usually invisible. Tend2Thrive surfaces how many connections were made at your event - a real number that shows the room worked.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128246;</div>
-        <h3>A shared memory of the room</h3>
-        <p>Attendees leave with a real record of everyone they met - who, where, and how to reach them - instead of a pile of cards they'll never sort.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128274;</div>
-        <h3>Their data, their rules</h3>
-        <p>Attendees control what they share and with whom. You provide the room and the introductions; they own the relationships that come out of it.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#9993;&#65039;</div>
-        <h3>No app store, no friction</h3>
-        <p>Guests sign in with an email magic link or a 6-digit code and install it from the browser. Nothing to download in the doorway.</p>
-      </div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">&#129309;</div>
+      <h3>Broker the introductions</h3>
+      <p>See who's opted in to meet, then introduce two people in a tap - each gets your note on why, in the app. Warm intros during your event, not left to chance and a name tag.</p>
     </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="how" id="how">
-    <div class="section-label center">How it works</div>
-    <h2 class="section-heading center">Set it up once, then just host</h2>
-    <p class="section-sub center">We handle setup. From there it's invite, see who's up to meet, and make the intros.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Set up your event</h3>
-        <p>We get your organization and your event set up — cover image, details, and all.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Send magic links</h3>
-        <p>Invite guests with magic links. One tap creates their Tend2Thrive profile and adds your event to it — no password, no signup form, no app store.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>See who's up to meet</h3>
-        <p>Attendees mark themselves available for matchmaking, so you get a live view of exactly who in the room wants an introduction.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Make the introductions</h3>
-        <p>Pair up two people who should meet, and each gets your intro — with your note on why — right there in the app.</p>
-      </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#127793;</div>
+      <h3>Your event, the common thread</h3>
+      <p>Guests join through your event and make their connections during it - so it's the room every one of those relationships traces back to.</p>
     </div>
-  </section>
-
-  <!-- CTA band -->
-  <div class="cta-band">
-    <h2>Let's make some history</h2>
-    <p>Tell us about your event and we'll help you bring your community onto Tend2Thrive.</p>
-    <a href="mailto:hello@mcdoco.com" class="btn-white">Get in touch</a>
+    <div class="feature-card">
+      <div class="feature-icon">&#128200;</div>
+      <h3>See the connections you created</h3>
+      <p>Networking is usually invisible. Tend2Thrive surfaces how many connections were made at your event - a real number that shows the room worked.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128246;</div>
+      <h3>A shared memory of the room</h3>
+      <p>Attendees leave with a real record of everyone they met - who, where, and how to reach them - instead of a pile of cards they'll never sort.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128274;</div>
+      <h3>Their data, their rules</h3>
+      <p>Attendees control what they share and with whom. You provide the room and the introductions; they own the relationships that come out of it.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#9993;&#65039;</div>
+      <h3>No app store, no friction</h3>
+      <p>Guests sign in with an email magic link or a 6-digit code and install it from the browser. Nothing to download in the doorway.</p>
+    </div>
   </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      &copy; 2026 Tend2Thrive &mdash; a product of <a href="https://mcdoco.com">McDoCo, LLC</a> &nbsp;&middot;&nbsp;
-      <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
-      <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp;
-      <a href="mailto:hello@mcdoco.com">Contact</a>
-    </p>
-  </footer>
+<!-- How it works -->
+<section class="how" id="how">
+  <div class="section-label center">How it works</div>
+  <h2 class="section-heading center">Set it up once, then just host</h2>
+  <p class="section-sub center">We handle setup. From there it's invite, see who's up to meet, and make the intros.</p>
 
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Set up your event</h3>
+      <p>We get your organization and your event set up — cover image, details, and all.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Send magic links</h3>
+      <p>Invite guests with magic links. One tap creates their Tend2Thrive profile and adds your event to it — no password, no signup form, no app store.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>See who's up to meet</h3>
+      <p>Attendees mark themselves available for matchmaking, so you get a live view of exactly who in the room wants an introduction.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Make the introductions</h3>
+      <p>Pair up two people who should meet, and each gets your intro — with your note on why — right there in the app.</p>
+    </div>
   </div>
+</section>
 
-</body>
-</html>
+<!-- CTA band -->
+<div class="cta-band">
+  <h2>Let's make some history</h2>
+  <p>Tell us about your event and we'll help you bring your community onto Tend2Thrive.</p>
+  <a href="mailto:hello@mcdoco.com" class="btn-white">Get in touch</a>
+</div>
