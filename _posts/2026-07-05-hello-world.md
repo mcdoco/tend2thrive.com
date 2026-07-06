@@ -6,9 +6,9 @@ author: Matt Connors
 ---
 I started Tend2Thrive 3 weeks ago with the goal of making networking easier for everybody. It came from a problem of my own: I could never remember *where* I'd met someone, or when we'd last spoken. That history is inherently multi-medium - sometimes it's a coffee, sometimes it's a zoom call, sometimes it's an event. Stitching this together from the incumbent players was difficult, as most are in a war to prevent scraping and maintain their stranglehold on user-generated content. 
 
-In contrast, I decided to be aggressively user-friendly - giving full control of data, and building capabilities through **compatibility, rather than control**. Users are the producers, and I believe they'll go where they are treated best. It's obvious to me that they deserve autonomy over their data, and visibility into how it is used. If they give it, they should also be able to take it away, just as easily.
+In contrast, I decided to be aggressively user-friendly - giving full control of data, and building capabilities through **compatibility, rather than control**. Users are the producers, and I believe they'll go where they are treated best. It's obvious to me that they deserve autonomy over their data, and visibility into how it is used. 
 
-AI - despite its flaws - is incredibly empowering to the end user. It's now trivially possible for everybody to build their own professional website. But what isn't as simple is getting that site in front of people, and making sure it works with theirs. Features are practically commoditized, so a durable moat is hard to find - but interoperability, plus a real record of who actually met whom in person, sure feels like one to me.
+AI - despite its flaws - is incredibly empowering to the end user. It's now simple for anybody to build their own professional website. But getting that site in front of the right people is still hard. Features are practically commoditized, so a durable moat is hard to find - but interoperability, plus a real record of who actually met whom in person, sure feels like one to me.
 
 ## Product Progress
 
