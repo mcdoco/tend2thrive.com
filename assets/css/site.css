@@ -90,6 +90,10 @@ nav a:hover { color: var(--green); }
 
 .nav-cta:hover { background: var(--green) !important; color: var(--text) !important; }
 
+/* Hamburger toggle — hidden on desktop */
+.nav-toggle { display: none; }
+.nav-toggle-label { display: none; }
+
 /* ── Hero ── */
 .hero {
   text-align: center;
@@ -529,6 +533,53 @@ th { background: var(--pale); color: var(--blue); }
 
 /* ── Responsive ── */
 @media (max-width: 600px) {
-  nav ul { display: none; }
+  nav { flex-wrap: wrap; }
+
+  /* Show the hamburger button */
+  .nav-toggle-label {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 2.25rem;
+    height: 2.25rem;
+    cursor: pointer;
+    padding: 0.4rem;
+  }
+  .nav-toggle-label span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* Collapsed menu */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
+    padding: 1rem 0 0.5rem;
+  }
+
+  /* Expanded when checkbox is checked */
+  .nav-toggle:checked ~ ul { display: flex; }
+
+  /* Animate hamburger into an X */
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-cta { display: inline-block; }
+
   .btn-primary, .btn-secondary { display: block; text-align: center; margin: 0.4rem 0; }
 }
