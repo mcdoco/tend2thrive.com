@@ -1,0 +1,64 @@
+# Tend2Thrive
+
+> Tend2Thrive is a Professional Relationship Manager (PRM) — a CRM for people,
+> not deals. It captures the moment you meet someone (who, where, and when) and
+> turns it into a living memory you can come back to and tend. "Grow your network
+> like a garden." Built by McDoCo, LLC. This site (tend2thrive.com) is the
+> marketing site; the app is at app.tend2thrive.com and the programmatic API at
+> api.tend2thrive.com.
+
+## What it does
+
+The one moment it's built around: you meet someone great, you both say "let's stay
+in touch," and then the moment evaporates. Tend2Thrive answers the only question
+that matters afterward — *who was that, and where did we meet?*
+
+The loop:
+
+- **Meet & scan.** Scan the person's code (or show yours — a digital lanyard with
+  your photo, name, and headline). One action adds them to your people *and* logs
+  the encounter to your timeline.
+- **Remember.** Your timeline is a chronological record of every encounter — where,
+  when, and private notes only you can see. A memory, not a headcount.
+- **Tend.** Keep notes, save the details that matter, reach back out.
+- **Earn the connection.** *Connected* means mutual and verified — you both showed
+  up — not a one-way follow you can rack up by the thousand.
+
+## How it's different
+
+- **A memory, not a headcount** — the timeline remembers where and when you met.
+- **Connections are earned, not collected** — mutual and verified, not a follow.
+- **Your data, your rules** — per-field visibility across three tiers (Nobody /
+  Contacts / Connections); export everything or delete it all, permanently.
+- **Bring your own links, no lock-in** — LinkedIn, GitHub, X are just links on your
+  card; verify the ones you can, leave with everything.
+- **No password, no app store** — sign in with an email magic link or 6-digit code;
+  install from the browser as a PWA.
+
+## Who it's for
+
+- People who meet a lot of people — at conferences, meetups, dinners — and are
+  tired of watching good introductions evaporate.
+- Communities and event hosts — organizations host events on Tend2Thrive and
+  broker in-person introductions during them.
+
+## For AI agents
+
+To act on a member's behalf (read their contacts, timeline, or events; record who
+they met), use the **API**, not this marketing site or the human app. The API's
+own agent guide — how to authenticate with a personal access token, and which
+operations answer questions like "who did I meet this week" or record "I met X" —
+is published at https://app.tend2thrive.com/llms.txt.
+
+## Pages
+
+- [Home](https://tend2thrive.com/): the pitch, features, and how it works.
+- [For hosts](https://tend2thrive.com/hosts.html): hosting events and brokering introductions.
+- [Blog](https://tend2thrive.com/blog/): product notes and updates.
+- [Privacy](https://tend2thrive.com/privacy.html) and [Terms](https://tend2thrive.com/terms.html).
+
+## Product
+
+- [Web app (sign up / sign in)](https://app.tend2thrive.com): the human web app.
+- [API agent guide](https://app.tend2thrive.com/llms.txt): auth + operation recipes for agents.
+- [API reference (Swagger UI)](https://api.tend2thrive.com/) and [OpenAPI spec (JSON)](https://api.tend2thrive.com/openapi.json).
