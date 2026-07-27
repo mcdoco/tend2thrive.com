@@ -2,10 +2,13 @@
 # Front matter (even empty) is what makes Jekyll run this through Liquid, so the API
 # origin below comes from _config.yml rather than being hardcoded in two places.
 ---
-// Progressive enhancement for the waitlist form (_includes/waitlist-form.html).
-// Without JS the form is an inert mailto — this is a static site, so there is no
-// server-side post target — and with it, the submission goes to the API's public
-// POST /v1/waitlist cross-origin.
+// Progressive enhancement for the waitlist dialog (_includes/waitlist-modal.html)
+// and the form inside it (_includes/waitlist-form.html).
+//
+// The "Join the waitlist" buttons are plain mailto links until this runs; here they
+// become openers for the dialog. Without JS the form is an inert mailto too — this
+// is a static site, so there is no server-side post target — and with it, the
+// submission goes to the API's public POST /v1/waitlist cross-origin.
 //
 // The API answers 204 for every well-formed address, whether it's new, already
 // queued, or already invited, so there is exactly one success message. Anything
@@ -58,9 +61,12 @@
         .then(function (response) {
           if (response.ok) {
             // Replace the fields entirely: there's nothing left to submit, and a form
-            // still sitting there invites a second, pointless attempt.
+            // still sitting there invites a second, pointless attempt. The submit
+            // button lives in its own footer bar now, so clear that too.
             var fields = form.querySelector(".waitlist-fields");
             if (fields) fields.remove();
+            var footer = form.querySelector(".waitlist-footer");
+            if (footer) footer.remove();
             setNote(form, MESSAGES.success, false);
             return;
           }
@@ -81,6 +87,31 @@
         });
     });
   }
+
+  // Turn the mailto links into dialog openers. If the browser can't do showModal
+  // (anything before 2022), they're left alone and the mailto stands.
+  function wireDialog(dialog) {
+    if (typeof dialog.showModal !== "function") return;
+
+    var openers = document.querySelectorAll("[data-waitlist-open]");
+    for (var i = 0; i < openers.length; i++) {
+      openers[i].addEventListener("click", function (event) {
+        event.preventDefault();
+        dialog.showModal();
+        var first = dialog.querySelector("input");
+        if (first) first.focus();
+      });
+    }
+
+    // Escape is handled natively; this is the click-outside half. A click on the
+    // backdrop reports the dialog itself as the target, the inner content doesn't.
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) dialog.close();
+    });
+  }
+
+  var dialog = document.getElementById("waitlist-modal");
+  if (dialog) wireDialog(dialog);
 
   var forms = document.querySelectorAll("[data-waitlist]");
   for (var i = 0; i < forms.length; i++) handle(forms[i]);

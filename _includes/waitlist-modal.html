@@ -1,0 +1,23 @@
+{%- comment -%}
+The waitlist dialog. Rendered once per page by _layouts/default.html so that every
+"Join the waitlist" call to action — the nav's included — has something to open.
+
+Openers are marked with data-waitlist-open and are handled by assets/js/waitlist.js.
+They stay plain links pointing at a mailto so that a browser without JS (or without
+<dialog>) still has a way through; the script preventDefaults them into showModal().
+
+The close button is a method="dialog" form, which the browser handles natively — no
+script involved — and it sits next to, not inside, the waitlist form.
+{%- endcomment -%}
+<dialog class="waitlist-modal" id="waitlist-modal" aria-labelledby="waitlist-modal-title">
+  <div class="waitlist-modal-inner">
+    <form method="dialog" class="waitlist-modal-dismiss">
+      <button type="submit" aria-label="Close">&times;</button>
+    </form>
+
+    <h2 id="waitlist-modal-title">Join the waitlist</h2>
+    <p class="waitlist-modal-lede">We're focusing on existing user referrals at the moment. Please leave your name and email, and we'll be in touch. </p>
+
+    {% include waitlist-form.html id="modal" %}
+  </div>
+</dialog>

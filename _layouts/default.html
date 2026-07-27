@@ -30,7 +30,10 @@
 
   </div>
 
-  <!-- Enhances the waitlist form where one is on the page; a no-op elsewhere. -->
+  <!-- On every page, so the nav's "Join the waitlist" has something to open. -->
+  {% include waitlist-modal.html %}
+
+  <!-- Opens the dialog above and enhances the form inside it. -->
   <script src="/assets/js/waitlist.js" defer></script>
 
   {% include analytics.html %}

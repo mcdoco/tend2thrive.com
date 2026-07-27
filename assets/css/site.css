@@ -532,8 +532,7 @@ th { background: var(--pale); color: var(--blue); }
 /* Post body images shouldn't overflow the column */
 .legal img { max-width: 100%; height: auto; border-radius: 6px; }
 
-/* The line under the hero's waitlist form: why there's a form here at all, plus the
-   "see how it works" link the form displaced. */
+/* The line under the hero's call to action: why there's a waitlist at all. */
 .hero-aside {
   font-family: system-ui, sans-serif;
   font-size: 0.9rem;
@@ -544,10 +543,82 @@ th { background: var(--pale); color: var(--blue); }
 
 .hero-aside a { color: var(--blue); }
 
-/* ── Waitlist form ── */
-/* Sign-up is invite-only, so this is the site's primary call to action. Two
-   placements share one set of rules: on the pale hero (default) and on the blue CTA
-   band (.waitlist-onblue), which only needs the input chrome inverted. */
+/* ── Waitlist dialog ── */
+/* Sign-up is invite-only, so this is the site's primary call to action. The buttons
+   on the page only open this; the form itself lives here and nowhere else. */
+.waitlist-modal {
+  border: 0;
+  border-radius: 8px;
+  padding: 0;
+  width: min(30rem, calc(100vw - 2rem));
+  color: var(--text);
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(0, 31, 61, 0.3);
+  /* The universal reset (margin: 0) clobbers the dialog's UA default of
+     margin: auto, which is what centers a modal. Put it back. */
+  margin: auto;
+}
+
+.waitlist-modal::backdrop { background: rgba(0, 31, 61, 0.55); }
+
+.waitlist-modal-inner {
+  position: relative;
+  padding: 2.25rem 2rem 2rem;
+}
+
+.waitlist-modal h2 {
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: var(--blue);
+  margin-bottom: 0.6rem;
+  padding-right: 2rem;
+}
+
+.waitlist-modal-lede {
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.waitlist-modal-dismiss {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+}
+
+.waitlist-modal-dismiss button {
+  background: none;
+  border: 0;
+  padding: 0.25rem 0.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.waitlist-modal-dismiss button:hover { color: var(--text); }
+
+/* In the narrow dialog the fields stack, the same way they do on a phone. */
+.waitlist-modal .waitlist-fields { flex-direction: column; }
+/* Once stacked, the inputs' `flex: 1 1 12rem` basis would apply to their
+   height (the main axis is now vertical). Reset to auto height, full width. */
+.waitlist-modal .waitlist input { flex: 0 0 auto; width: 100%; }
+.waitlist-modal .waitlist-note { margin-bottom: 0; }
+
+/* The submit button sits in a bar along the bottom of the dialog. The footer
+   breaks out of .waitlist-modal-inner's side and bottom padding to run edge to
+   edge, then pays that padding back so the button lines up with the body. */
+.waitlist-modal .waitlist-footer {
+  margin: 1.5rem -2rem -2rem;
+  padding: 1.25rem 2rem;
+  border-top: 1px solid var(--border);
+  background: var(--pale);
+  border-radius: 0 0 8px 8px;
+}
+.waitlist-modal .waitlist-footer button { width: 100%; margin: 0; }
+
 .waitlist {
   max-width: 520px;
   margin: 0 auto;
@@ -580,8 +651,8 @@ th { background: var(--pale); color: var(--blue); }
   outline-offset: 1px;
 }
 
-/* The submit button is .btn-primary / .btn-white, which carry a right margin for
-   their side-by-side hero use. In the form, gap handles the spacing. */
+/* The submit button is .btn-primary, which carries a right margin for its
+   side-by-side hero use. In the form, gap handles the spacing. */
 .waitlist button {
   flex: 0 0 auto;
   margin-right: 0;
@@ -599,18 +670,6 @@ th { background: var(--pale); color: var(--blue); }
 }
 
 .waitlist-note.waitlist-error { color: #b3261e; }
-
-/* On the blue band: white-bordered fields and light text for the status line. */
-.waitlist-onblue input {
-  border-color: rgba(255, 255, 255, 0.55);
-}
-
-.waitlist-onblue input:focus-visible {
-  outline-color: #fff;
-}
-
-.waitlist-onblue .waitlist-note { color: rgba(255, 255, 255, 0.85); }
-.waitlist-onblue .waitlist-note.waitlist-error { color: #ffd7d3; }
 
 /* Labels exist for screen readers; the placeholder carries the visible cue. */
 .visually-hidden {
@@ -681,5 +740,7 @@ th { background: var(--pale); color: var(--blue); }
   /* One field per row, full-width button — the rule above already stacks it, this
      just undoes the stray vertical margin now that gap is doing the spacing. */
   .waitlist-fields { flex-direction: column; }
+  /* Stacked: keep the 12rem flex-basis off the (now vertical) main axis. */
+  .waitlist input { flex: 0 0 auto; width: 100%; }
   .waitlist button { width: 100%; margin: 0; }
 }
