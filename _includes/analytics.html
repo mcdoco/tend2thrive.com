@@ -1,0 +1,29 @@
+{%- comment -%}
+  Cookieless PostHog page-view counting.
+
+  Renders only on production builds (the Pages workflow sets JEKYLL_ENV) and
+  only once a key is set, so `jekyll serve` and Docker never write to the
+  project. Clear site.posthog.api_key to switch analytics off entirely.
+
+  `persistence: 'memory'` is what makes this consent-banner-free: no cookies,
+  no localStorage, nothing left on the visitor's device. The tradeoff is that
+  every page load looks like a brand-new anonymous person, so read the pageview
+  counts and ignore "unique users" in the dashboard — that number is noise here.
+
+  Session replay is off on purpose. It captures far more than a page count and
+  would need real consent plus input masking, which is a bigger commitment than
+  this site needs.
+{%- endcomment -%}
+{%- if jekyll.environment == "production" and site.posthog.api_key and site.posthog.api_key != "" -%}
+<script>
+  function tend2thriveInitAnalytics() {
+    posthog.init({{ site.posthog.api_key | jsonify }}, {
+      api_host: {{ site.posthog.api_host | jsonify }},
+      persistence: 'memory',
+      person_profiles: 'identified_only',
+      disable_session_recording: true
+    });
+  }
+</script>
+<script defer src="{{ site.posthog.assets_host }}/static/array.js" onload="tend2thriveInitAnalytics()"></script>
+{%- endif -%}

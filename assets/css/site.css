@@ -532,6 +532,100 @@ th { background: var(--pale); color: var(--blue); }
 /* Post body images shouldn't overflow the column */
 .legal img { max-width: 100%; height: auto; border-radius: 6px; }
 
+/* The line under the hero's waitlist form: why there's a form here at all, plus the
+   "see how it works" link the form displaced. */
+.hero-aside {
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 1.5rem auto 0;
+}
+
+.hero-aside a { color: var(--blue); }
+
+/* ── Waitlist form ── */
+/* Sign-up is invite-only, so this is the site's primary call to action. Two
+   placements share one set of rules: on the pale hero (default) and on the blue CTA
+   band (.waitlist-onblue), which only needs the input chrome inverted. */
+.waitlist {
+  max-width: 520px;
+  margin: 0 auto;
+  font-family: system-ui, sans-serif;
+}
+
+.waitlist-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.waitlist input {
+  flex: 1 1 12rem;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: #fff;
+}
+
+.waitlist input::placeholder { color: #8a9bab; }
+
+.waitlist input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+/* The submit button is .btn-primary / .btn-white, which carry a right margin for
+   their side-by-side hero use. In the form, gap handles the spacing. */
+.waitlist button {
+  flex: 0 0 auto;
+  margin-right: 0;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* The status line: empty (and so invisible) until the script has something to say. */
+.waitlist-note {
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+  min-height: 1.35rem;
+  color: var(--muted);
+}
+
+.waitlist-note.waitlist-error { color: #b3261e; }
+
+/* On the blue band: white-bordered fields and light text for the status line. */
+.waitlist-onblue input {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.waitlist-onblue input:focus-visible {
+  outline-color: #fff;
+}
+
+.waitlist-onblue .waitlist-note { color: rgba(255, 255, 255, 0.85); }
+.waitlist-onblue .waitlist-note.waitlist-error { color: #ffd7d3; }
+
+/* Labels exist for screen readers; the placeholder carries the visible cue. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   nav { flex-wrap: wrap; }
@@ -583,4 +677,9 @@ th { background: var(--pale); color: var(--blue); }
   .nav-cta { display: inline-block; }
 
   .btn-primary, .btn-secondary { display: block; text-align: center; margin: 0.4rem 0; }
+
+  /* One field per row, full-width button — the rule above already stacks it, this
+     just undoes the stray vertical margin now that gap is doing the spacing. */
+  .waitlist-fields { flex-direction: column; }
+  .waitlist button { width: 100%; margin: 0; }
 }

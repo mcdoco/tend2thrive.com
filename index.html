@@ -5,11 +5,11 @@ description: "Tend2Thrive keeps you organized with everyone you meet — in pers
 ---
 
 <!-- Hero -->
-<header class="hero">
+<header class="hero" id="waitlist">
   <h1>You met someone great.<br>Now what?</h1>
   <p>That great conversation shouldn't fade into a half-remembered name. Tend2Thrive remembers everyone you meet - in person or on a call - so the connections worth keeping never slip away.</p>
-  <a href="https://app.tend2thrive.com" class="btn-primary">Get started free</a>
-  <a href="#how" class="btn-secondary">See how it works</a>
+  {% include waitlist-form.html id="hero" %}
+  <p class="hero-aside">We're letting people in a handful at a time, so everyone gets a real welcome. Leave your email and we'll come find you. <a href="#how">See how it works</a></p>
 </header>
 
 <!-- Features -->
@@ -59,13 +59,13 @@ description: "Tend2Thrive keeps you organized with everyone you meet — in pers
 <section class="how" id="how">
   <div class="section-label center">How it works</div>
   <h2 class="section-heading center">From handshake to relationship, step by step</h2>
-  <p class="section-sub center">No invite, no waitlist. Sign in and start.</p>
+  <p class="section-sub center">Here's what happens once you're in.</p>
 
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <h3>Start with just your name</h3>
-      <p>Give your name and you're in - no password, no app store, no signup form. When you're ready to make it permanent, add your email.</p>
+      <p>When your invite lands, sign in with the email you left us - no password, no app store, no signup form. Give your name and you're in.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
@@ -89,6 +89,6 @@ description: "Tend2Thrive keeps you organized with everyone you meet — in pers
 <!-- CTA band -->
 <div class="cta-band">
   <h2>Tend your network, <span style="color: var(--green);">watch it thrive</span></h2>
-  <p>Sign in with your email and start remembering the people you meet. No password, no app store, no lock-in.</p>
-  <a href="https://app.tend2thrive.com" class="btn-white">Get started free</a>
+  <p>Leave your email and we'll let you know the moment there's room. No password, no app store, no lock-in.</p>
+  {% include waitlist-form.html id="cta" variant="onblue" %}
 </div>

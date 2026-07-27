@@ -59,6 +59,10 @@ is published at https://app.tend2thrive.com/llms.txt.
 
 ## Product
 
-- [Web app (sign up / sign in)](https://app.tend2thrive.com): the human web app.
+- [Web app (sign in)](https://app.tend2thrive.com): the human web app. Sign-up is
+  invite-only — join the waitlist at https://tend2thrive.com/#waitlist. Invites
+  arrive by email; there's no code to redeem, you just sign in once you're in.
+  People arriving on someone else's invite (a peer contact-invite, an event ticket,
+  an org invite link) skip the waitlist entirely.
 - [API agent guide](https://app.tend2thrive.com/llms.txt): auth + operation recipes for agents.
 - [API reference (Swagger UI)](https://api.tend2thrive.com/) and [OpenAPI spec (JSON)](https://api.tend2thrive.com/openapi.json).

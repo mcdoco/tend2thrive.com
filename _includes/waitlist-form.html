@@ -1,0 +1,45 @@
+{%- comment -%}
+The waitlist sign-up form. Sign-up is invite-only, so this — not a link to the app —
+is the primary call to action on the site.
+
+Params:
+  id      required, unique per instance (the page renders this twice; ids and the
+          label/field association must not collide)
+  variant "onblue" when placed on the blue CTA band, omitted on a light background
+
+Posts to the API's public POST /v1/waitlist (site.api_base), which answers 204 for
+every well-formed address whether it's new, already queued, or already invited — so
+there is exactly one success message and it never reveals anyone's status. The form
+degrades to a plain mailto if JS is off; there's no server to post to otherwise, this
+being a static site.
+{%- endcomment -%}
+{%- assign fid = include.id -%}
+<form class="waitlist{% if include.variant == 'onblue' %} waitlist-onblue{% endif %}"
+      id="waitlist-{{ fid }}"
+      data-waitlist
+      action="mailto:hello@mcdoco.com"
+      method="post">
+  <div class="waitlist-fields">
+    <label class="visually-hidden" for="waitlist-name-{{ fid }}">Your name</label>
+    <input type="text"
+           id="waitlist-name-{{ fid }}"
+           name="displayName"
+           placeholder="Your name"
+           autocomplete="name"
+           maxlength="120" />
+
+    <label class="visually-hidden" for="waitlist-email-{{ fid }}">Email address</label>
+    <input type="email"
+           id="waitlist-email-{{ fid }}"
+           name="email"
+           placeholder="you@work.com"
+           autocomplete="email"
+           maxlength="320"
+           required />
+
+    <button type="submit" class="{% if include.variant == 'onblue' %}btn-white{% else %}btn-primary{% endif %}">
+      Join the waitlist
+    </button>
+  </div>
+  <p class="waitlist-note" data-waitlist-note role="status" aria-live="polite"></p>
+</form>

@@ -4,6 +4,12 @@ url: https://tend2thrive.com
 lang: en
 author: McDoCo, LLC
 
+# jekyll-github-metadata (pulled in by the github-pages gem) resolves this from
+# the `origin` remote on GitHub's builders, but it can't see git from inside the
+# docker-compose container — and it only hard-fails when JEKYLL_ENV=production.
+# Stating it explicitly is what makes a local production build work.
+repository: mcdoco/tend2thrive.com
+
 # Blog posts publish under /blog/YYYY/MM/DD/title/. This is scoped to posts via
 # `defaults` on purpose — a global `permalink:` ending in "/" also rewrites
 # plain pages (hosts.html -> /hosts/), which 404s the nav and footer links.
@@ -24,6 +30,21 @@ feed:
 
 # Show a short excerpt on the blog index (first paragraph).
 excerpt_separator: "\n\n"
+
+# Cookieless page-view counting — see _includes/analytics.html, which only
+# renders on production builds. A PostHog project API key is a public,
+# write-only key (it appears in the page source either way), so committing it is
+# fine. Leave api_key empty to turn analytics off.
+posthog:
+  api_key: "phc_Cwhnm84Y3UAYC6VeZAc4v7G6P2ubEDQVEwKueUYdvzrR"
+  api_host: https://us.i.posthog.com
+  assets_host: https://us-assets.i.posthog.com
+
+# Where the waitlist form posts (assets/js/waitlist.js). Sign-up is invite-only, so
+# the API's public POST /v1/waitlist is the site's one write path. Point this at a
+# local API (http://localhost:8081) to exercise the form against a dev stack — the
+# API must list this site's origin in MARKETING_ORIGINS or the browser blocks it.
+api_base: https://api.tend2thrive.com
 
 # Files that must not be published.
 exclude:
