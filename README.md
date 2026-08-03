@@ -6,23 +6,31 @@ and hosts it natively; there is no CI pipeline to maintain.
 
 ## Preview locally (Docker — no Ruby needed)
 
-The only requirement on your machine is **Docker Desktop**. Ruby, Bundler, the
-build toolchain, and the gems all live in the container.
+Ruby, Bundler, the build toolchain, and the gems all live in the container.
 
 ```sh
-docker compose up          # serves http://localhost:4000, live-reloading
+docker compose watch       # builds, serves, and syncs your edits live
 ```
 
-Open <http://localhost:4000> and edit any file — the page reloads. Stop with
-`Ctrl-C`, then:
+Open <http://archmatt.local:4000> and edit any file — the page reloads. Stop
+with `Ctrl-C`, then `docker compose down`.
 
-```sh
-docker compose down
-```
+Two things differ from a plain local Docker setup, both because the daemon runs
+on **archmatt.local** over an SSH context:
 
-The first run is slow (it pulls the Ruby image and compiles gems into a cached
-volume); every run after is fast. For a one-off production build instead of the
-live server:
+- **It's `watch`, not `up`.** The remote daemon can't see this machine's
+  filesystem, so the old `.:/site` bind mount would resolve to an empty path on
+  the far side. The source is baked into the image instead, and `watch` streams
+  later edits into the running container over the Docker API. Requires Compose
+  ≥ 2.22 (`docker compose version`).
+- **Browse the host, not localhost.** Ports publish on archmatt.local, so
+  that's the URL. Livereload needs no extra setup — Jekyll's injected snippet
+  reads the hostname from the page URL and connects to `archmatt.local:35729`,
+  which is published alongside the site.
+
+The first run is slow (it pulls the Ruby image and compiles native gems); later
+runs reuse the layer cache. For a one-off production build instead of the live
+server:
 
 ```sh
 docker compose run --rm site bundle exec jekyll build   # output in _site/
@@ -77,7 +85,8 @@ index.html              Home            (/)
 hosts.html              For hosts       (/hosts.html)
 privacy.html            Privacy Policy  (/privacy.html)
 terms.html              Terms           (/terms.html)
-docker-compose.yml      Local preview container
+Dockerfile              Local preview image (source baked in, not mounted)
+docker-compose.yml      Local preview + file-sync config
 Gemfile                 Pins the github-pages gem (matches GitHub's build)
 CNAME                   Custom domain
 ```

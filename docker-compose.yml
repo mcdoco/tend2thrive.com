@@ -3,29 +3,48 @@
 # machine. Everything (Ruby, Bundler, the toolchain, the gems) lives in the
 # container.
 #
-#   docker compose up      → serves http://localhost:4000, live-reloading
-#   Ctrl-C then compose down to stop.
+#   docker compose watch   → builds, serves, and syncs your edits live
+#   Ctrl-C, then `docker compose down` to stop.
 #
-# First run pulls the Ruby image and installs gems into a named volume, so
-# it's slow once; every run after is fast because the gems persist.
+# NOTE: this is `watch`, not `up`. The Docker daemon is remote (an SSH
+# context), so it cannot see this machine's filesystem and a bind mount of the
+# working tree would resolve to an empty path on the remote host. Instead the
+# source is baked into the image (see Dockerfile) and `watch` streams later
+# edits into the running container over the Docker API. Needs Compose ≥ 2.22
+# (`sync+restart` below needs ≥ 2.32) — check with `docker compose version`.
+#
+# The ports below publish on the REMOTE host, so browse the Docker host
+# directly — http://archmatt.local:4000 — not localhost. Livereload follows on
+# its own: Jekyll's injected snippet takes the hostname from the page URL, so
+# it connects to archmatt.local:35729, which is published too.
 
 services:
   site:
-    # Full Debian-based Ruby (not -slim): the github-pages gem builds native
-    # extensions (sassc, nokogiri, eventmachine) that need gcc/make, which the
-    # full image already has.
-    image: ruby:3.3
-    working_dir: /site
-    # Kept on one line on purpose: a folded (>) block indents the flags further
-    # than `bash`, so YAML preserves the newlines and bash splits the flags off
-    # as separate commands — Jekyll then binds to 127.0.0.1 and is unreachable.
-    command: bash -c "bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling"
+    build: .
     ports:
       - "4000:4000"    # the site
       - "35729:35729"  # livereload websocket
-    volumes:
-      - .:/site                    # your working tree, live
-      - bundle:/usr/local/bundle   # installed gems, cached between runs
+    develop:
+      watch:
+        # Content and templates: copy straight into the running container.
+        # Jekyll's own watcher picks them up and regenerates.
+        - action: sync
+          path: .
+          target: /site
+          ignore:
+            - .git/
+            - _site/
+            - .jekyll-cache/
+            - vendor/
 
-volumes:
-  bundle:
+        # Jekyll reads _config.yml once at boot and never re-reads it, so a
+        # plain sync would leave the server running stale settings.
+        - action: sync+restart
+          path: ./_config.yml
+          target: /site/_config.yml
+
+        # Changing the gems means reinstalling them — that's an image rebuild.
+        - action: rebuild
+          path: ./Gemfile
+        - action: rebuild
+          path: ./Gemfile.lock

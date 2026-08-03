@@ -63,7 +63,6 @@ Now, think of your profile as a **lanyard** - the badge you wear into a room. Ev
 <figure class="ly-fig">
 <div class="ly-row"><span class="ly-tag ly-tag--pub">PUBLIC</span><div class="ly-clip"></div></div>
 <div class="ly-row"><span class="ly-tag ly-tag--pub"></span><div class="ly-band ly-band--pub">
-<!-- Original SVG avatar (no third-party IP). Swap for your own <img> anytime. -->
 <div class="ly-avatar" style="overflow:hidden">
 <svg viewBox="0 0 78 78" width="100%" height="100%" role="img" aria-label="Illustration of a synthetic person">
 <defs>
